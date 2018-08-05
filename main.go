@@ -1,23 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"reflect"
+	"github.com/kong36088/wellgo"
 )
 
-type A struct{
+func main() {
+	InitErr()
 
-}
-
-type B struct{
-
-}
-
-func anoy(r interface{}){
-	fmt.Print(reflect.TypeOf(r))
-}
-
-func main(){
-	b := &B{}
-	anoy(b)
+	wellgo.Run()
 }
