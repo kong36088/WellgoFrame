@@ -2,7 +2,7 @@
  * @author wellsjiang
  */
 
-package main
+package errors
 
 import (
 	"errors"
@@ -12,7 +12,7 @@ import (
 var (
 	ErrTestErr = errors.New("test error")
 
-	ErrMap = map[error]int{
+	ErrMap = map[error]int64{
 		ErrTestErr: 10000,
 	}
 )

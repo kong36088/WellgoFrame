@@ -1,0 +1,15 @@
+<seelog minlevel="debug">  <!--这里可能会有坑，seelog默认是异步logger，所以无法保证及时写log以及log顺序并非强一致-->
+    <outputs formatid="global">
+        <console/>
+
+        <rollingfile type="date" filename="/data/log/wellgo/wellgo.log" datepattern="2018-01-01" maxrolls="365" />
+
+        <filter levels="error,critical">
+            <rollingfile type="date" filename="/data/log/wellgo/wellgo-error.log" datepattern="2018-01-01" maxrolls="365" />
+        </filter>
+
+    </outputs>
+    <formats>
+        <format id="global" format="%Date(2018-01-01 00:00:00) [%Level] %RelFile, %Func, line=%Line, msg=%Msg%n"/>
+    </formats>
+</seelog>
