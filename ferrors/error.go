@@ -2,7 +2,7 @@
  * @author wellsjiang
  */
 
-package errors
+package ferrors
 
 import (
 	"errors"

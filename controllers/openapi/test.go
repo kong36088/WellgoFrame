@@ -3,7 +3,7 @@ package openapi
 import (
 	"github.com/kong36088/wellgo"
 	"fmt"
-	"github.com/kong36088/WellgoFrame/errors"
+	"github.com/kong36088/WellgoFrame/ferrors"
 )
 
 type Test struct {
@@ -15,6 +15,7 @@ type Test struct {
 	arr   []interface{}
 }
 
+// 子构造函数，必须主动调用父构造函数
 func (this *Test) Init(ctx *wellgo.WContext) {
 	this.Controller.Init(ctx)
 
@@ -22,5 +23,8 @@ func (this *Test) Init(ctx *wellgo.WContext) {
 }
 
 func (this *Test) Run() *wellgo.Result {
-	return wellgo.NewResult(wellgo.GetErrorCode(errors.ErrTestErr), "", map[string]interface{}{"a": "b"})
+	this.Ctx.Logger.Debug(this.Args)
+	this.Ctx.Logger.Debug(this)
+
+	return wellgo.NewResult(wellgo.GetErrorCode(ferrors.ErrTestErr), "", map[string]interface{}{"a": "b"})
 }
