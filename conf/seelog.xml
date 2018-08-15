@@ -2,10 +2,42 @@
     <outputs formatid="global">
         <console/>
 
-        <rollingfile type="date" filename="/data/log/wellgo/wellgo.log" datepattern="2018-01-01" maxrolls="365" />
+        <!--
+        datepattern 使用go原生time.LocalTime().Format(rollFileWriter.datePattern)
+        所以这里datepattern应该按照go原生的方式进行设置
+        const (
+            stdLongMonth      = "January"
+            stdMonth          = "Jan"
+            stdNumMonth       = "1"
+            stdZeroMonth      = "01"
+            stdLongWeekDay    = "Monday"
+            stdWeekDay        = "Mon"
+            stdDay            = "2"
+            stdUnderDay       = "_2"
+            stdZeroDay        = "02"
+            stdHour           = "15"
+            stdHour12         = "3"
+            stdZeroHour12     = "03"
+            stdMinute         = "4"
+            stdZeroMinute     = "04"
+            stdSecond         = "5"
+            stdZeroSecond     = "05"
+            stdLongYear       = "2006"
+            stdYear           = "06"
+            stdPM             = "PM"
+            stdpm             = "pm"
+            stdTZ             = "MST"
+            stdISO8601TZ      = "Z0700"  // prints Z for UTC
+            stdISO8601ColonTZ = "Z07:00" // prints Z for UTC
+            stdNumTZ          = "-0700"  // always numeric
+            stdNumShortTZ     = "-07"    // always numeric
+            stdNumColonTZ     = "-07:00" // always numeric
+        )
+        -->
+        <rollingfile type="date" filename="/data/log/wellgo/wellgo.log" datepattern="2006-01-02" maxrolls="365" fullname="true" />
 
         <filter levels="error,critical">
-            <rollingfile type="date" filename="/data/log/wellgo/wellgo-error.log" datepattern="2018-01-01" maxrolls="365" />
+            <rollingfile type="date" filename="/data/log/wellgo/wellgo-error.log" datepattern="2006-01-02" maxrolls="365" fullname="true" />
         </filter>
 
     </outputs>
